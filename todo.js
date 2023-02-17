@@ -37,12 +37,14 @@ class ToDoList{
 
 function updateOpenList(toDo)
 {
-    var div=document.createElement('div');
-    div.classList.add("row","openlisttodo");
-    var p= document.createElement('p');
-    p.innerText=toDo.title; //toDo
-    p.classList.add('col-md-8');
+    var div =createDiv(["row","openlisttodo"]); 
+    //div.classList.add("row","openlisttodo");
+   // var p= document.createElement('p');
+    var p=createElementP(toDo);
+   //p.innerText=toDo.title; //toDo
+   // p.classList.add('col-md-8');
     div.appendChild(p);
+
     var idiv=document.createElement("div");
     idiv.classList.add('col-md-4');
     var button=document.createElement('i');
@@ -67,12 +69,14 @@ function updateOpenList(toDo)
 
 function updateInProgressList(toDo,div)
 {
-        var div1=document.createElement('div');
-        div1.classList.add("row");
-        div1.classList.add("inProgressList");
-        var p=document.createElement('p');
-        p.innerText=toDo.title;
-        p.classList.add('col-md-8');
+        var div1 =createDiv(["row","inProgressList"]); 
+        //var div1=document.createElement('div');
+        //div1.classList.add("row");
+        //div1.classList.add("inProgressList");
+        var p=createElementP(toDo);
+        //var p=document.createElement('p');
+        //p.innerText=toDo.title;
+        //p.classList.add('col-md-8');
         div1.appendChild(p);
         var idiv=document.createElement("div");
         idiv.classList.add('col-md-4');
@@ -101,12 +105,14 @@ function updateInProgressList(toDo,div)
 
 function updateCompletedList(todo,div)
 { 
-    var div2=document.createElement('div');
-    div2.classList.add("row");
-    div2.classList.add("completedList");
-    var p=document.createElement('p');
-    p.innerText=todo.title;
-    p.classList.add('col-md-8');
+    var div2 =createDiv(["row","completedList"]); 
+    //var div2=document.createElement('div');
+    //div2.classList.add("row");
+    //div2.classList.add("completedList");
+    var p=createElementP(todo);
+    //var p=document.createElement('p');
+    //p.innerText=todo.title;
+    //p.classList.add('col-md-8');
     div2.appendChild(p);
     var idiv=document.createElement("div");
     idiv.classList.add('col-md-4');
@@ -129,4 +135,30 @@ function deletetoDo(todo,parent)
 {
     document.getElementById(parent).removeChild(todo);
 
+}
+
+function createDiv(className)
+{
+    var div=document.createElement('div');
+    className.forEach(i => {
+    div.classList.add(i);
+     
+    });
+
+    return div;
+}
+
+function createElementP(todo)
+{
+    var p=document.createElement('p');
+    p.innerText=todo.title;
+    p.classList.add('col-md-8');
+    return p;
+    
+}
+
+function CreateButtonDiv()
+{
+    var idiv=document.createElement("div");
+    idiv.classList.add('col-md-4');
 }
